@@ -20,19 +20,19 @@ export default function Weather(props) {
     });
   }
 
-  function search() {
-    const apiKey = "5201594abea9f3e38b70e65b11a80c24";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=matric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   function handleSubmit(event) {
     event.preventDefault();
     search();
   }
 
-  function handleCityCange(event) {
+  function handleCityChange(event) {
     setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
@@ -43,10 +43,10 @@ export default function Weather(props) {
             <div className="col-9">
               <input
                 type="search"
-                placeholder="Enter a city."
+                placeholder="Enter a city.."
                 className="form-control"
                 autoFocus="on"
-                onCange={handleCityCange}
+                onChange={handleCityChange}
               />
             </div>
             <div className="col-3">
